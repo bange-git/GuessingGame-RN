@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   nuberText: {
     color: Colors.accent500,
     fontSize: 36,
-    fontWeight: "bold",
+    fontFamily: 'open-sans-bold'
   },
 });
 export default NumberContainer;

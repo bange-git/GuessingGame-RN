@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   instructionText: {
     color: Colors.accent500,
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: 'open-sans-bold',
   },
 });
 
