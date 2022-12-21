@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Alert, FlatList } from "react-native";
+import { View, StyleSheet, Alert, FlatList, useWindowDimensions } from "react-native";
 import NumberContainer from "../components/game/NumberContainer";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
@@ -18,12 +18,16 @@ const generateRandomBetween = (max, min, exclude) => {
   }
 };
 
+
+
 let minBoundary = 1;
 let maxBoundary = 100;
 const GameScreen = ({ userNumber, onGameOver }) => {
   const initialState = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialState);
   const [guessRounds, setGuessRounds] = useState([]);
+
+  const {width, height} = useWindowDimensions();
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -61,12 +65,13 @@ const GameScreen = ({ userNumber, onGameOver }) => {
   };
 
   const guessRoundsListLength = guessRounds.length;
+
   return (
     <View style={styles.screen}>
       <Title>Oponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
-        <InstructionText style={styles.instructionText}>
+        <InstructionText style={[styles.instructionText]}>
           Higher or Lower
         </InstructionText>
         <View style={styles.buttonsContainer}>
@@ -104,7 +109,7 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   instructionText: {
-    marginBottom: 16,
+    marginBottom: 4,
   },
   buttonsContainer: {
     flexDirection: "row",
